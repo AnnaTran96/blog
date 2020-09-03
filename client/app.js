@@ -5,10 +5,6 @@ form.addEventListener('submit', submitPost)
 
 getPost();
 
-// const url = 'http://localhost:3000'
-
-
-
 function submitPost(e) {
     e.preventDefault();
 
@@ -24,7 +20,7 @@ function submitPost(e) {
         headers: { "Content-Type": "application/json" }
     }
 
-    fetch('http://localhost:3000/posts', options)
+    fetch('http://localhost:3000/posts/', options)
         .then(res => res.json())
         .then(addPost)
         .catch(console.warn)
@@ -45,11 +41,5 @@ function appendPosts(data) {
 function addPost(postData){
     const newPost = document.createElement('div');
     newPost.textContent = `Title: ${postData.title}, Name:${postData.name}, Story:${postData.story}`
-    const post = formatPost(postData, newPost)
-    postContainer.append(post);
+    postContainer.append(newPost);
 };
-
-
-function formatPost(post){
-    console.log(post)
-}
