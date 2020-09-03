@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('../databases/config');
-const { index, show, create } = require('../databases/queries');
+const { index, show, create, update, destroy } = require('../databases/queries');
 
 const router = express.Router();
 
@@ -28,6 +28,21 @@ router.post('/', (req, res) => {
             const post = resp.rows[0]
             res.status(201).json(post)
         })
+        .catch(err => res.status(500).end())
+})
+
+router.patch('/:id', (req, res) => {
+    db.run(update, [req.params.id])
+        .then(updatePost => {
+            const newPost = updatePost.rows[0]
+            res.json({newPost})
+        })
+        .catch(err => res.status(500).end())
+})
+
+router.delete('/:id', (res, req) => {
+    db.run(destroy, [req.params.id])
+        .then(res.status(204))
         .catch(err => res.status(500).end())
 })
 
