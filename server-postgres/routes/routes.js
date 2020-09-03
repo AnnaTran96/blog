@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     db.run(show, [req.params.id])
         .then(resp => {
-            const post = resp.row
+            const post = resp.rows
             res.json({post})
         })
         .catch(err => res.status(500).end())
