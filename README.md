@@ -4,9 +4,9 @@ This app has been created using React and a SQL database.
 
 ## Instructions
 
-First, go into the client/public folder and `open index.html`.
+First, go into the clientfolder and run `npm install`.
 
-Then run `npm install` and `npm start`.
+Then `npm start`.
 
 After, go into server-postgres folder and load the database `/i datatabases/seeds.sql`.
 
